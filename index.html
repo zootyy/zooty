@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>zooty.org</title>
+  <title>ZOOTY IS A FAGGOT</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-
-  <meta property="og:title" content="zooty.org" />
-  <meta property="og:description" content="" />
-  <meta property="og:image" content="https://zooty.org/zootyy.png" />
-  <meta property="og:url" content="https://zooty.org" />
-  <meta property="og:type" content="website" />
-
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="zooty.org" />
-  <meta name="twitter:description" content="" />
-  <meta name="twitter:image" content="https://zooty.org/zootyy.png" />
-
   <style>
     html, body {
       margin: 0;
@@ -26,13 +12,11 @@
       background: black;
       overflow: hidden;
     }
-
     #video-container {
       position: relative;
       width: 100%;
       height: 100%;
     }
-
     video {
       width: 100%;
       height: 100%;
@@ -41,7 +25,6 @@
       filter: blur(8px) brightness(0.5);
       transition: filter 0.5s ease;
     }
-
     #overlay {
       position: absolute;
       top: 0;
@@ -59,11 +42,9 @@
       z-index: 2;
       backdrop-filter: blur(4px);
     }
-
     #overlay.hidden {
       display: none;
     }
-
     .playing video {
       filter: none;
     }
@@ -71,26 +52,26 @@
 </head>
 <body>
   <div id="video-container">
-    <video id="myVideo" src="wyattmundaezooty.mp4" loop ></video>
+    <video id="myVideo" src="wyattmundaezooty.mp4" loop playsinline></video>
     <div id="overlay">Click anywhere to play</div>
   </div>
-
   <script>
     const video = document.getElementById('myVideo');
     const overlay = document.getElementById('overlay');
     const container = document.getElementById('video-container');
 
-    overlay.addEventListener('click', () => {
-      video.play();
+    const playVideoWithSound = () => {
+      video.muted = false;
+      video.play().catch(() => {});
       overlay.classList.add('hidden');
       container.classList.add('playing');
-    });
+    };
 
+    overlay.addEventListener('click', playVideoWithSound);
     container.addEventListener('click', () => {
-      if (overlay.classList.contains('hidden')) return;
-      video.play();
-      overlay.classList.add('hidden');
-      container.classList.add('playing');
+      if (!overlay.classList.contains('hidden')) {
+        playVideoWithSound();
+      }
     });
   </script>
 </body>
